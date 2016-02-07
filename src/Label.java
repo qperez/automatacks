@@ -15,4 +15,8 @@ public class Label {
     public void setEtiquette(String etiquette) {
         this.etiquette = etiquette;
     }
+
+    public void accept(Visiteur visiteur) {
+        visiteur.visit(this);
+    }
 }

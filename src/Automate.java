@@ -77,4 +77,8 @@ public class Automate {
     public String toString() {
         return "yolo";
     }
+
+    public void accept(Visiteur visiteur) {
+        visiteur.visit(this);
+    }
 }

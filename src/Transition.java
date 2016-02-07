@@ -1,7 +1,7 @@
 /**
  * Created by kiwhacks on 01/02/16.
  */
-public class Transition {
+public class Transition implements Visitable {
     Etat source;
     Etat cible;
     Label etiquette;
@@ -34,5 +34,9 @@ public class Transition {
 
     public void setEtiquette(Label etiquette) {
         this.etiquette = etiquette;
+    }
+
+    public void accept(Visiteur visiteur) {
+        visiteur.visit(this);
     }
 }

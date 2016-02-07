@@ -1,6 +1,6 @@
 /** Created by Quentin **/
 
-public class Etat{
+public class Etat implements Visitable {
     private String nom;
     private boolean estInitial;
     private boolean estFinal;
@@ -11,6 +11,7 @@ public class Etat{
         this.estInitial = estInitial;
         this.estFinal = estFinal;
         this.sousAutomate = sousAutomate;
+
     }
 
     public void ajouterSousAutomate(Automate a) {
@@ -47,5 +48,9 @@ public class Etat{
 
     public void setSousAutomate(Automate sousAutomate) {
         this.sousAutomate = sousAutomate;
+    }
+
+    public void accept(Visiteur visiteur) {
+        visiteur.visit(this);
     }
 }
