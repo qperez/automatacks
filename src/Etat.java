@@ -50,7 +50,7 @@ public class Etat implements Visitable {
         this.sousAutomate = sousAutomate;
     }
 
-    public void accept(Visiteur visiteur) {
-        visiteur.visit(this);
+    public Object accept(Visiteur visiteur) {
+        return visiteur.visit(this);
     }
 }

@@ -36,7 +36,7 @@ public class Transition implements Visitable {
         this.etiquette = etiquette;
     }
 
-    public void accept(Visiteur visiteur) {
-        visiteur.visit(this);
+    public Object accept(Visiteur visiteur) {
+        return visiteur.visit(this);
     }
 }
