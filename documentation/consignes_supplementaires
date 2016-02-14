@@ -1,0 +1,8 @@
+*Visiteur "vérification" de l'automate
+ -> enregistrer une liste d'erreurs (ArrayList<String> comme attribut du visiteur)
+
+* /!\ visiteur:
+    + méthode accept dans les objets vivités --> appel à visit(this)
+    + méthode visit(X) dans le visiteur --> rapelle accept sur le visiteur
+
+* Projet à rendre pour le 22/02 @ 23h55

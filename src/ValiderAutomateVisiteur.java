@@ -1,7 +1,12 @@
+import java.util.ArrayList;
+import java.util.logging.ErrorManager;
+
 /**
  * Created by kiwhacks on 07/02/16.
  */
 public class ValiderAutomateVisiteur implements Visiteur {
+    public ArrayList<Error> listError = new ArrayList<>();
+
     public Object visit(Etat etat) {
         return etat.getNom();
     }
@@ -36,10 +41,11 @@ public class ValiderAutomateVisiteur implements Visiteur {
 
     public Object visit(Automate automate) {
         for (Etat e : automate.getListeEtats()) {
-            if (!plusieursEtatsAvecMemeNom(automate, e)) return false;
-            if (!plusieursTransitionsAvecMemeLabel(automate)) return false;
+            if (!plusieursEtatsAvecMemeNom(automate, e)) listError.add(new Error("Il y a déjà un etat avec ce nom" + e.getNom()));
+            if (!plusieursTransitionsAvecMemeLabel(automate)) listError.add(new Error("Il y a plusieurs transitions avec le même automate"));
 
             boolean estInitial = false;
+            //Là y'a souçis je pense la variable "estInitial" vaut false donc on passe pas dans la conditionnelle ;-)
             if (estInitial)
                     if (e.isEstInitial()) return false;
             else
@@ -50,10 +56,11 @@ public class ValiderAutomateVisiteur implements Visiteur {
                 for (Transition t : automate.getListeTransitions()) {
                     if (t.getSource() == e) aTransition = true; break;
                 }
-                if (!aTransition) return false;
+                if (!aTransition) listError.add(new Error("Il n'y a pas de transition"));;
             }
 
-            if (nombreTransitionsSortanteEtat(automate, e) == 0 && !e.isEstFinal()) return false;
+            if (nombreTransitionsSortanteEtat(automate, e) == 0 && !e.isEstFinal())
+                listError.add(new Error("L'état non-initial" + e.getNom() + "doit être cible d'au moins une transition"));
         }
         return true;
     }
