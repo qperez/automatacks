@@ -21,7 +21,7 @@ public class Automate {
             throw new AucunEtatInitialException();
         } else {
             for (Etat e : listeEtats) {
-                if (e.isEstInitial()) throw new PlusieursEtatsInitiauxException();
+                if (e!=etatCourant && e.isEstInitial()) throw new PlusieursEtatsInitiauxException();
             }
         }
         this.listeEtats = listeEtats;

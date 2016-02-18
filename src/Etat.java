@@ -11,7 +11,6 @@ public class Etat implements Visitable {
         this.estInitial = estInitial;
         this.estFinal = estFinal;
         this.sousAutomate = sousAutomate;
-
     }
 
     public void ajouterSousAutomate(Automate a) {
