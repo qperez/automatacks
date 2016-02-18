@@ -5,6 +5,14 @@ import java.util.logging.ErrorManager;
  * Created by kiwhacks on 07/02/16.
  */
 public class ValiderAutomateVisiteur implements Visiteur {
+    private ValiderAutomateVisiteur(){}
+
+    private static ValiderAutomateVisiteur INSTANCE = null;
+
+    public static ValiderAutomateVisiteur getInstance() {
+        return INSTANCE;
+    }
+
     public ArrayList<Error> listError = new ArrayList<>();
 
     public Object visit(Etat etat) {

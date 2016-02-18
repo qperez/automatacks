@@ -6,8 +6,14 @@ import java.util.ArrayList;
 public class SimulerAutomateVisiteur implements Visiteur {
     Label event;
 
-    public SimulerAutomateVisiteur(Label event) {
-        this.event = event;
+    private SimulerAutomateVisiteur() {
+    }
+
+    private static SimulerAutomateVisiteur INSTANCE = null;
+
+    public static SimulerAutomateVisiteur getINSTANCE() {
+        if (INSTANCE == null) INSTANCE = new SimulerAutomateVisiteur();
+        return INSTANCE;
     }
 
     @Override

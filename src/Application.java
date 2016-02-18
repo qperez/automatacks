@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Application {
     public static void main(String[] args) {
-        ValiderAutomateVisiteur vav = new ValiderAutomateVisiteur();
+        ValiderAutomateVisiteur vav = ValiderAutomateVisiteur.getInstance();
 
         Etat e = new Etat("1", true, false, null);
         Etat f = new Etat("2", false, true, null);
@@ -18,7 +18,8 @@ public class Application {
         ArrayList<Transition> listeTransitions = new ArrayList<Transition>();
         listeTransitions.add(t);
 
-        SimulerAutomateVisiteur s = new SimulerAutomateVisiteur(new Label("a"));
+        SimulerAutomateVisiteur s = SimulerAutomateVisiteur.getINSTANCE();
+        s.setEvent(new Label("a"));
 
         try {
             Automate a = new Automate(listeEtats, listeTransitions, e);
