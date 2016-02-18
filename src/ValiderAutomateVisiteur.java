@@ -9,7 +9,7 @@ public class ValiderAutomateVisiteur implements Visiteur {
 
     private static ValiderAutomateVisiteur INSTANCE = null;
 
-    public static ValiderAutomateVisiteur getInstance() {
+    public static ValiderAutomateVisiteur getINSTANCE() {
         return INSTANCE;
     }
 
