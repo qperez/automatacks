@@ -12,6 +12,7 @@ public class Automate {
 
     }
 
+    // Constructeur
     public Automate(ArrayList<Etat> listeEtats, ArrayList<Transition> listeTransitions, Etat etatCourant)
             throws AucunEtatInitialException, PlusieursEtatsInitiauxException {
         if (!etatCourant.isEstInitial()) {
@@ -29,6 +30,7 @@ public class Automate {
         this.etatCourant = etatCourant;
     }
 
+    // Méthode pour ajouter un état
     public void ajouterEtat(Etat e)
             throws AjouterEtatException, AucunEtatInitialException, PlusieursEtatsInitiauxException {
         if (!e.isEstInitial()) {
@@ -45,35 +47,43 @@ public class Automate {
         else throw new AjouterEtatException();
     }
 
+    // Méthode pour ajouter une transition
     public void ajouterTransition(Transition t) throws AjouterTransitionException {
         if (!listeEtats.contains(t)) listeTransitions.add(t);
         else throw new AjouterTransitionException();
     }
 
+    // Retourne la liste des états de l'automate
     public ArrayList<Etat> getListeEtats() {
         return listeEtats;
     }
 
+    // Affecter la liste des états de l'automate
     public void setListeEtats(ArrayList<Etat> listeEtats) {
         this.listeEtats = listeEtats;
     }
 
+    // Retourne la liste des transitions de l'automate
     public ArrayList<Transition> getListeTransitions() {
         return listeTransitions;
     }
 
+    // Affecter la liste des transitions de l'automate
     public void setListeTransitions(ArrayList<Transition> listeTransitions) {
         this.listeTransitions = listeTransitions;
     }
 
+    // Retourne l'état courant de l'automate
     public Etat getEtatCourant() {
         return etatCourant;
     }
 
+    // Affecte l'état courant de l'automate
     public void setEtatCourant(Etat etatCourant) {
         this.etatCourant = etatCourant;
     }
 
+    // Méthode toString retournant le nom de l'état courant ainsi que les états de son sous automate s'il existe
     public String toString() {
 
         String result = "Etat courant : " + this.etatCourant.getNom() + "\n";
@@ -88,6 +98,7 @@ public class Automate {
         return result;
     }
 
+    // Méthode accept du paradigm visiteur
     public void accept(Visiteur visiteur) {
         visiteur.visit(this);
     }

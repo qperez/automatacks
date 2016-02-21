@@ -6,12 +6,14 @@ public class Transition implements Visitable {
     Etat cible;
     Label etiquette;
 
+    // Constructeur
     public Transition(Etat source, Label etiquette, Etat cible) {
         this.source = source;
         this.etiquette = etiquette;
         this.cible = cible;
     }
 
+    // Getters and setters
     public Etat getSource() {
         return source;
     }
@@ -36,6 +38,7 @@ public class Transition implements Visitable {
         this.etiquette = etiquette;
     }
 
+    // Méthode accept du paradigme visiteur
     public Object accept(Visiteur visiteur) {
         return visiteur.visit(this);
     }

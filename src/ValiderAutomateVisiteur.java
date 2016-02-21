@@ -5,24 +5,31 @@ import java.util.logging.ErrorManager;
  * Created by kiwhacks on 07/02/16.
  */
 public class ValiderAutomateVisiteur implements Visiteur {
+    // Constructeur
     private ValiderAutomateVisiteur(){}
 
+    // Singleton
     private static ValiderAutomateVisiteur INSTANCE = null;
-
     public static ValiderAutomateVisiteur getINSTANCE() {
+        if (INSTANCE == null) INSTANCE = new ValiderAutomateVisiteur();
         return INSTANCE;
     }
 
     public ArrayList<Error> listError = new ArrayList<>();
 
+    //Réécriture des méthodes héritées
+
+    // Retourne le nom de l'état
     public Object visit(Etat etat) {
         return etat.getNom();
     }
 
+    // Retourne le contenu de l'étiquette
     public Object visit(Transition transition) {
         return transition.getEtiquette();
     }
 
+    // Méthode pour traiter les contraintes de l'automate
     public boolean plusieursEtatsAvecMemeNom(Automate a, Etat e) {
         for (Etat ebis : a.getListeEtats()) {
             if (!e.equals(ebis) && e.accept(this) == ebis.accept(this)) return false;
@@ -47,6 +54,7 @@ public class ValiderAutomateVisiteur implements Visiteur {
         return nbTransitions;
     }
 
+    // Retourne true si l'automate est valide, false sinon
     public Object visit(Automate automate) {
         for (Etat e : automate.getListeEtats()) {
             if (!plusieursEtatsAvecMemeNom(automate, e)) listError.add(new Error("Il y a déjà un etat avec ce nom" + e.getNom()));
