@@ -75,7 +75,17 @@ public class Automate {
     }
 
     public String toString() {
-        return "yolo";
+
+        String result = "Etat courant : " + this.etatCourant.getNom() + "\n";
+        try {
+            for (Etat etat : etatCourant.getSousAutomate().getListeEtats()) {
+                result += " `-> etat_" + this.etatCourant.getNom() + ".sousEtat_" + etat.getNom() + "\n";
+            }
+        } catch (NullPointerException e) {
+            result += "    `-> Aucun sous automate pour l'état courant\n";
+        }
+
+        return result;
     }
 
     public void accept(Visiteur visiteur) {
