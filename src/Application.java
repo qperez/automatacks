@@ -82,7 +82,7 @@ public class Application {
                 }
 
             } catch (VisiteurInconnuException ex) {
-                System.out.println("Transition inconnue");
+                System.out.println(ex);
             }
         } catch (AucunEtatInitialException e) {
             System.out.println(e);
